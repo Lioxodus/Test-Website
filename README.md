@@ -23,3 +23,28 @@ Die Tabelle wird dynamisch aus eingetragenen Begegnungen aufgebaut. Zwei Punkte 
 `index.html`, `tabellen.html`, `spieltage.html`, `ergebnisse.html`, `turniere.html`, `news.html`, `regeln.html`: eigene HTML-Seiten. `app.js`: Datenanbindung, Navigation und Tabellenrechnung. `style.css`: responsives Layout. `logo.png`: Original-Logo.
 
 Turniere und News sind vorerst Informationsseiten ohne erfundene Daten. Derzeit kein Formular, keine Spielerprofile, keine Benutzerkonten. Für die spätere Übergabe muss der neue Betreiber Zugriff auf das Google Sheet und Repository erhalten; keine Passwörter in die Website schreiben.
+
+
+## Abschlussversion: Datenschutz und Impressum
+
+Neue Seiten: `impressum.html`, `datenschutz.html`. Beide sind von jeder Seite im Footer erreichbar. **Wichtig: Die orange markierten Platzhalter müssen vor einem regulären öffentlichen Betrieb durch die echten Betreiberangaben ersetzt werden.** Die Datenschutzhinweise sind ein Ausgangspunkt und müssen anhand der echten Verhältnisse geprüft werden. Insbesondere öffentliche Spielernamen, Ergebnisse und die Übertragung beim Google-Sheets-Abruf müssen berücksichtigt werden.
+
+Die Logik für Tabellen, Punkte und Spieltage wurde gegenüber der zuvor getesteten Version nicht geändert. Externe Google-Fonts wurden entfernt; Schriftarten sind jetzt lokal verfügbare Systemschriften.
+
+### Vor Übergabe / Veröffentlichung prüfen
+
+- Betreiberangaben vollständig und rechtlich passend ausgefüllt; optional rechtlich prüfen lassen.
+- Spieler über die öffentliche Veröffentlichung ihrer Namen/Ergebnisse informieren; Rechtsgrundlage prüfen.
+- Alle Unterseiten, Tabellen, Spieltage und mobile Navigation erneut prüfen.
+- Website, GitHub-Repository und Google Sheet mit dem tatsächlichen Betreiber abstimmen.
+- Keine persönlichen Zugangsdaten, privaten Sheet-URLs oder Secrets im Repository hinterlegen.
+- Bei neuen Funktionen (Formulare, Analytics, eingebettete Dienste) Datenschutzhinweise erneut prüfen.
+
+### Pflege
+
+- `app.js`: Google-Sheets-ID, Berechnungen, Seiteninhalte und Navigation.
+- `style.css`: Farben, Abstände, Mobilansicht.
+- `logo.png`: Logo links oben.
+- HTML-Dateien: jeweiliger Seiten-Einstieg; sie verwenden gemeinsame Styles und Funktionen.
+
+**Keine Garantie für rechtliche Vollständigkeit:** Angaben zum Betreiber und besondere Pflichten hängen vom realen Betrieb ab.
