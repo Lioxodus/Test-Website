@@ -63,3 +63,6 @@ Die Logik für Tabellen, Punkte und Spieltage wurde gegenüber der zuvor geteste
 - Punktevergabe: `a.pts+=3` bzw. `b.pts+=3` in `table()`.
 - Google-Sheets-ID steht am Anfang der Datei `app.js` in `SHEET_ID`.
 - Impressum und Datenschutztexte werden über `legalPage()` in `app.js` angezeigt; die beiden HTML-Seiten sind über Footer-Links erreichbar.
+
+## Discord
+Der offizielle Discord-Einladungslink ist in `app.js` auf der Startseite und im Footer eingebunden: https://discord.gg/5jw43pMMqU. Beim Ändern des Einladungslinks beide Stellen aktualisieren.
