@@ -48,3 +48,11 @@ Die Logik für Tabellen, Punkte und Spieltage wurde gegenüber der zuvor geteste
 - HTML-Dateien: jeweiliger Seiten-Einstieg; sie verwenden gemeinsame Styles und Funktionen.
 
 **Keine Garantie für rechtliche Vollständigkeit:** Angaben zum Betreiber und besondere Pflichten hängen vom realen Betrieb ab.
+
+
+## Regelwerk & Pflichtseiten (überarbeitet)
+- `regeln.html` zeigt Liga- und Pokalregeln. Die Inhalte liegen im `regeln`-Abschnitt der Funktion `staticPage()` in `app.js`.
+- Die automatische Tabellenwertung beträgt jetzt **3 Punkte für einen Sieg**, entsprechend dem bereitgestellten Regelwerk. Ein Unentschieden wird bei regulären First-to-6-Partien nicht unterstützt.
+- Impressum und Datenschutz sind **unten auf jeder Seite** im Bereich „Rechtliches“ verlinkt; direkte URLs: `impressum.html`, `datenschutz.html`.
+- Die beiden Seiten enthalten bewusst **Platzhalter** für Namen und Anschrift der späteren verantwortlichen Person. Vor regulärem Betrieb müssen diese Angaben ausgefüllt und rechtlich geprüft werden.
+- Discord-Kanäle für Verlegungen und Fair Play sind nur teilweise benannt. Fehlende Kanalnamen müssen vor Veröffentlichung ergänzt werden.
