@@ -1,49 +1,25 @@
-# Future Oche League – MVP
+# Future Oche League – kostenlose GitHub-Pages-Version
 
-Lauffähige mehrseitige Community-Website mit eigener lokaler SQLite-Datenbank, ohne externe npm-Abhängigkeiten.
+## Hochladen
 
-## Start
+Alle Dateien aus diesem Ordner **direkt in das Stammverzeichnis** deines GitHub-Repositories legen. Wichtig: `index.html` muss direkt oben liegen (nicht in einem Unterordner). Bei GitHub Settings → Pages → Deploy from a branch → `main` / `(root)`.
 
-Benötigt **Node.js 22.13+**.
+## Google Sheets
 
-```bash
-cd future-oche-league
-npm start
-```
+Die Website ist mit dieser Tabellen-ID vorbereitet:
+`1ErtkV6jN19yiBiKr7o4zxcgZYEWMcscXVXxk0NdTMw8`
 
-Browser: http://localhost:3000
+**Wichtig:** Die derzeitige Verbindung liest CSV aus dem **ersten Tabellenblatt (gid=0)**. Falls deine Sheet-Daten in einem anderen Tab liegen, in `app.js` den `gid=0`-Wert auf die ID dieses Tabellenblatts ändern (sie steht im Google-Sheets-Link nach `#gid=`). Stelle das Blatt für lesenden Zugriff bereit. Nur Daten, die öffentlich sichtbar sein dürfen, dort ablegen. Wenn Sheets den CSV-Zugriff nicht erlaubt, das betreffende Blatt alternativ unter Datei → Teilen → Im Web veröffentlichen als CSV veröffentlichen und dessen CSV-URL in `app.js` als `CSV_URL` eintragen. Die öffentliche URL kann von jedem abgerufen werden.
 
-## Administrator einrichten
+Eine Tabelle, Spalten **A–I** exakt:
+`Spieltag | Zeitraum | Plattform | Liga | Spieler A | Spieler B | Leg A | Leg B | Status`
 
-Es gibt bewusst **keinen bekannten Standard-Admin und kein Admin-Passwort im Quellcode**.
-1. Regulär ein Konto über `/registrieren` erstellen.
-2. Server beenden.
-3. Im Projektordner folgenden Befehl ausführen, wobei die registrierte E-Mail-Adresse angepasst wird:
+`Plattform=Autodarts`, `Liga=1,2,3,4`. Ein Match zählt nur bei `Status=Gespielt` oder `Bestätigt`, gültigen ungleichen Zahlen als Leg-Ergebnis und mindestens einem gewonnenen Leg. **Keine** automatische Ergebnisübermittlung oder Admin-Logins implementiert; Verwaltung erfolgt ausschließlich direkt in Google Sheets.
 
-```bash
-node -e "const {DatabaseSync}=require('node:sqlite');const d=new DatabaseSync('league.sqlite');console.log(d.prepare('UPDATE users SET role=? WHERE email=?').run('admin','DEINE-EMAIL@BEISPIEL.DE'))"
-```
+Die Tabelle wird dynamisch aus eingetragenen Begegnungen aufgebaut. Zwei Punkte je Sieg, danach Sortierung nach Siegen, Leg-Differenz und gewonnenen Legs. Alle Begegnungen (auch offene) führen zum Eintrag der beteiligten Spieler in der Tabelle.
 
-4. Server starten, anmelden und `/admin` öffnen.
+## Inhalte
 
-## Seiten
+`index.html`, `tabellen.html`, `spieltage.html`, `ergebnisse.html`, `turniere.html`, `news.html`, `regeln.html`: eigene HTML-Seiten. `app.js`: Datenanbindung, Navigation und Tabellenrechnung. `style.css`: responsives Layout. `logo.png`: Original-Logo.
 
-`/` Startseite, `/rangliste`, `/spieler`, `/spieler/:slug`, `/liga`, `/turniere`, `/ergebnisse`, `/ergebnis-melden`, `/community`, `/informationen`, `/registrieren`, `/anmelden`, `/mein-profil`, `/admin`.
-
-## Resultat-Workflow
-
-Registrierter Spieler meldet ein eigenes Match gegen einen anderen registrierten Spieler. Es wird mit `pending` gespeichert und erscheint nur unter seinen eigenen Meldungen und im Admin-Panel. Admin kann bestätigen oder ablehnen. Nur `approved`-Resultate erscheinen öffentlich und beeinflussen Sieg/Niederlage/Punkte. Die vorläufige Punkteberechnung lautet 3 Punkte je Sieg und muss mit dem Liga-Regelwerk abgestimmt werden.
-
-## Einschränkungen vor öffentlichem Produktivbetrieb
-
-- Derzeit keine Autodarts-API-Verknüpfung oder automatische Verifikation. Das Autodarts-Feld ist eine frei angebbare Profilinformation.
-- Kein E-Mail-Verifikations-/Passwort-Reset-System, keine Ratenbegrenzung und keine Audit-Historie für Admin-Aktionen; diese müssen vor öffentlichem Einsatz ergänzt werden.
-- Keine fertige Rechts-/Datenschutz-/Impressum-Seite: Pflichtinformationen und Verantwortlichkeiten ergänzen.
-- Moderation kann eine Einreichung bestätigen oder ablehnen, aber keine eigenen Matches korrigieren. Wettbewerbsstruktur, Spielplan, genaue Wertung und Zulassung müssen konfiguriert werden.
-- Ergebnis-Einreichungen mit Links sind keine fälschungssicheren Beweise. Regelwerk und Verifikationsstandard ausarbeiten.
-- Für öffentliche Bereitstellung HTTPS, `COOKIE_SECURE=1`, sicheren Reverse Proxy, Backups und Datenbank-Zugriffsschutz konfigurieren.
-- Google-Font-Import durch selbst gehostete System-/Lizenzschriften ersetzen, falls Datenschutzanforderungen dies erfordern.
-
-## Datenbank
-
-`league.sqlite` wird beim ersten Start lokal automatisch angelegt. Keine Spieler oder Ergebnisse werden erfunden.
+Turniere und News sind vorerst Informationsseiten ohne erfundene Daten. Derzeit kein Formular, keine Spielerprofile, keine Benutzerkonten. Für die spätere Übergabe muss der neue Betreiber Zugriff auf das Google Sheet und Repository erhalten; keine Passwörter in die Website schreiben.
