@@ -53,14 +53,14 @@ Die Logik für Tabellen, Punkte und Spieltage wurde gegenüber der zuvor geteste
 ## Version 3 – fünf Ligen und Regeln
 - **Fünf** Ligen (Werte `1`, `2`, `3`, `4`, `5` in Google Sheets Spalte D); keine zusätzlichen Tabellenblätter erforderlich.
 - Neue 5. Liga erscheint auch ohne Einträge; zunächst ist die Tabelle entsprechend leer.
-- Ligapunkte: **3 für einen Sieg**, 0 für eine Niederlage; ein Unentschieden ist im regulären First-to-6-Format nicht möglich.
+- Ligapunkte: **2 für einen Sieg**, 0 für eine Niederlage; ein Unentschieden ist im regulären First-to-6-Format nicht möglich.
 - Sichtbare Footer-Links zu `impressum.html` und `datenschutz.html` auf jeder Seite. Vor öffentlichem Regelbetrieb müssen deren Platzhalter mit den tatsächlichen Betreiberangaben befüllt und geprüft werden.
 - Die Autodarts-Regeln stehen in `regeln.html` (HTML-Container); der Text wird in der `staticPage()`-Funktion in `app.js` eingefügt. Discord-Kanalnamen, die in der Vorlage fehlten, sind entsprechend als offen markiert.
 - Zur Veröffentlichung **den INHALT dieses Ordners** ins Hauptverzeichnis des GitHub-Repositories kopieren, nicht den Ordner selbst. Danach GitHub Desktop → Commit → Push.
 
 ## Wartung
 - Ligazahl: in `app.js` die Stellen `[1,2,3,4,5]` und `/^[1-5]$/` konsistent anpassen.
-- Punktevergabe: `a.pts+=3` bzw. `b.pts+=3` in `table()`.
+- Punktevergabe: `a.pts+=2` bzw. `b.pts+=2` in `table()`.
 - Google-Sheets-ID steht am Anfang der Datei `app.js` in `SHEET_ID`.
 - Impressum und Datenschutztexte werden über `legalPage()` in `app.js` angezeigt; die beiden HTML-Seiten sind über Footer-Links erreichbar.
 
