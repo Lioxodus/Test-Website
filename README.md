@@ -112,3 +112,7 @@ Die Turnierdaten kommen jetzt aus **zwei separaten, bereits im Web veröffentlic
 **Wichtig:** Die ältere Anleitung unter „Turniere verwalten“ ging noch von zwei Tabs der bestehenden Liga-Datei aus. Dies gilt für diese Version nicht mehr. Die Spaltenüberschriften aus den beigefügten CSV-Vorlagen werden weiterhin benötigt. In den Veröffentlichungseinstellungen von Google Sheets sicherstellen, dass die **Daten bei Änderungen automatisch erneut veröffentlicht** werden. Eine `pubhtml`-Adresse wird für den CSV-Abruf als `/pub?output=csv` verwendet. Prüfe die beiden URLs nach dem Upload direkt im Browser: Es müssen CSV-Zeilen und keine HTML-Fehlerseite kommen. Die Live-Erreichbarkeit und die tatsächlichen Spalten konnten in dieser Umgebung nicht verifiziert werden.
 
 Die bisherige Liga-Sheet-ID und alle fünf Ligatabellen bleiben unverändert.
+
+
+## Cache-Aktualisierung Oktober 2026
+In allen HTML-Dateien wird `app.js?v=20261013-2punkte-final` geladen. Dadurch lädt der Browser nach dem GitHub-Push die neue Datei, statt eine zuvor gespeicherte Version mit 3 Punkten anzuzeigen. Kontrolliere direkt unter `regeln.html`, dass Sieg = 2 und Niederlage = 0 angezeigt wird. Die Liga-Tabelle wird aus bestätigten Spielen berechnet; keine Unentschieden.
